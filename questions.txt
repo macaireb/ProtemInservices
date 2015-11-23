@@ -1,0 +1,20 @@
+Medical Device Test,"Medical Device problems are tracked and monitored by",B,"The Social Security Administration","The FDA","Medicare"
+Medical Device Test,"The Safe Medical Device Act is intended to:",C,"Find ALL broken devices","Track how many manufacturers are selling defective medical devices","Identify any medical device that poses a threat to public health and safety"
+Medical Device Test,A Hoyer lift is a medical device,A,True,False
+Medical Device Test,A Wound Vac is a medical device,A,True,False
+Medical Device Test,Insulin is classified as a Medical Device,B,True,False
+Medical Device Test,A serious injury is NOT life threatening,B,True,False
+Medical Device Test,A serious injury causes permanent damage or injury,A,True,False
+Medical Device Test,If I find broken equipment in the patient's home; I should,C,Call the FDA,Instruct the patient not to use the defective equipment,Call the office to report the broken equipment to the supervisor
+Medical Device Test,An incident report must be made out if the patient is injured from defective equipment,A,True,False
+Medical Device Test,Employee education on the Safe Medical Device Act must occur,C,Every 5 years,Bi-annually,Annually
+Understanding Restraints and Alternatives, Restraints are:, D, Necessary for safe client care.,The best way to keep a client from pacing or wandering away.,Being used more and more across America.,A form of medical treatment.
+Understanding Restraints and Alternatives, If your client is confused, a family member can order you to use restraints., B
+Understanding Restraints and Alternatives, Bed rails:,D,Help client move around in bed.,Have cause hundreds of accidents and deaths.,Can be considered a physical restraint.,All of the above.
+Understanding Restraints and Alternatives, Sleeping pills may be considered a type of restraint,A,True,False
+Understanding Restraints and Alternatives, Even a wheelchair or a tightly tucked bed sheet can be consider restraints if they are used for the convenience of the staff.,A,True,False
+Understanding Restraints and Alternatives, Physical therapy can be an excellent alternative to restraints because it helps strengthen muscles.,A,True,False
+Understanding Restraints and Alternatives, Client elopement is a rare problem in the United States,B,True,False
+Understanding Restraints and Alternatives, A client is most likely to elope within the first three days after admission.,A,True,False
+Understanding Restraints and Alternatives, If a client has a history of falls and/or elopement, restraints are the best way to keep him safe.,B,True,False
+Understanding Restraints and Alternatives, If you work with a restrained client you should use the type of restraint that you think will work best.,B,True,False
