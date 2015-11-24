@@ -14,6 +14,8 @@ import javax.swing.*;
 import java.io.*;
 import java.util.Enumeration;
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -24,11 +26,91 @@ public class ProtemInservices {
     /**
      * @param args the command line arguments
      */
+    static char CategorySelected;
+    
+    static void CategoryWindow(){
+        
+        JFrame frame = new JFrame("Category Selection Window");
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ButtonGroup CategoryGroup = new ButtonGroup();
+        JRadioButton[] Category = new JRadioButton[13];        
+        JButton Next = new JButton("Next");
+        JButton Exit = new JButton("Exit");
+        
+        String fileName = "category.txt";
+        try {
+            // FileReader reads text files in the default encoding.
+            
+            FileReader fileReader =   new FileReader(fileName);
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            String line = null;
+            String[] record = new String[2];
+            
+            for(int i=0;(line= bufferedReader.readLine()) != null;i++){
+                record = line.split(",");
+                Category[i] = new JRadioButton(record[1]);
+                CategoryGroup.add(Category[i]);                
+                frame.add(Category[i]);
+            }
+
+            // Always close files.
+            bufferedReader.close();
+            FileReader fileReaderTwo =   new FileReader(fileName);
+            // Always wrap FileReader in BufferedReader.
+            BufferedReader bufferedReaderTwo = new BufferedReader(fileReaderTwo);
+            
+            Next.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    String Line = null;
+                    for(int i=0;i<13;i++){
+                        if(Category[i].isSelected())
+                            for(int j=0;(Line= bufferedReaderTwo.readLine()) != null;j++)
+                                if(Line.contains(Category[i].getText()))
+                                    CategorySelected = Line.charAt(0);
+                                    System.out.println(CategorySelected);
+                                    break;
+                    }
+                    
+                bufferedReaderTwo.close();
+                } catch (IOException ex) {
+                    System.out.println(
+                    "Error reading file '" 
+                    + fileName + "'");  
+                }
+            }
+        });
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                fileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + fileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
+        
+        
+                        
+        frame.add(Exit);
+        frame.add(Next); 
+        frame.setLayout(new GridLayout(4, 4));
+        frame.setMinimumSize(new Dimension(1280, 1024));
+        
+        //Display the window.
+        //frame.pack();
+        frame.setVisible(true);        
+    }
     
     protected static void createAndShowGUI() {
         
         //Create and set up the window.
-        JFrame frame = new JFrame("HelloWorldSwing");
+        JFrame frame = new JFrame("Name Selection Window");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
  
         //Add the ubiquitous "Hello World" label.
@@ -86,7 +168,7 @@ public class ProtemInservices {
         Date testeeDate = new Date();
         
         //System.out.println("What is your name: ");
-        createAndShowGUI();
+        //createAndShowGUI();
        
         
         // The name of the file to open.
@@ -132,7 +214,7 @@ public class ProtemInservices {
             // Or we could just do this: 
             // ex.printStackTrace();
         }
-        
+        CategoryWindow();
         System.out.println(Nurse.findNurse("Dalila Hoeft"));
     }
 }
