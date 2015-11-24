@@ -12,10 +12,7 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import javax.swing.*;
 import java.io.*;
-import java.util.Enumeration;
 import java.util.Vector;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -64,13 +61,16 @@ public class ProtemInservices {
             public void actionPerformed(ActionEvent e) {
                 try {
                     String Line = null;
+                    search:
                     for(int i=0;i<13;i++){
                         if(Category[i].isSelected())
                             for(int j=0;(Line= bufferedReaderTwo.readLine()) != null;j++)
-                                if(Line.contains(Category[i].getText()))
+                                if(Line.contains(Category[i].getText())){
                                     CategorySelected = Line.charAt(0);
                                     System.out.println(CategorySelected);
-                                    break;
+                                    frame.dispose();
+                                    break search;
+                                }
                     }
                     
                 bufferedReaderTwo.close();
@@ -95,7 +95,11 @@ public class ProtemInservices {
             // ex.printStackTrace();
         }
         
-        
+        Exit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
                         
         frame.add(Exit);
         frame.add(Next); 
@@ -106,69 +110,13 @@ public class ProtemInservices {
         //frame.pack();
         frame.setVisible(true);        
     }
-    
-    protected static void createAndShowGUI() {
-        
-        //Create and set up the window.
-        JFrame frame = new JFrame("Name Selection Window");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
- 
-        //Add the ubiquitous "Hello World" label.
-        JLabel label = new JLabel("What is your name?");
-        JTextArea area = new JTextArea(100, 100);
-        JButton Exit = new JButton("Exit");
-        ButtonGroup category = new ButtonGroup();
-        JRadioButton[] Months = new JRadioButton[13];
-        Months[0] = new JRadioButton("January");
-        Months[1] = new JRadioButton("February");
-        Months[2] = new JRadioButton("March");
-        Months[3] = new JRadioButton("April");
-        Months[4] = new JRadioButton("May");
-        Months[5] = new JRadioButton("June");
-        Months[6] = new JRadioButton("July");
-        Months[7] = new JRadioButton("August");
-        Months[8] = new JRadioButton("September");
-        Months[9] = new JRadioButton("October");
-        Months[10] = new JRadioButton("November");
-        Months[11] = new JRadioButton("December");
-        Months[12] = new JRadioButton("January 2017");
-        for(int i=0;i<13;i++){
-            category.add(Months[i]);
-            frame.add(Months[i]);
-        }
-        
-        
-        Exit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                frame.dispose();
-            }
-        });
-        
-        area.setBounds(10, 30, 100, 100);
-        area.setBackground(Color.white);
-        area.setForeground(Color.black);
-        
-        frame.add(label);
-        //frame.add(new JSeparator());
-        frame.add(area);
-        frame.add(Exit);
-        
-        frame.setLayout(new GridLayout(4, 4));
-        frame.setMinimumSize(new Dimension(1280, 1024));
-        
-        //Display the window.
-        //frame.pack();
-        frame.setVisible(true);
-        
-    }
-    
+
     public static void main(String[] args) {
         // TODO code application logic here
         String testeeName = new String();
         Date testeeDate = new Date();
         
         //System.out.println("What is your name: ");
-        //createAndShowGUI();
        
         
         // The name of the file to open.
@@ -178,7 +126,6 @@ public class ProtemInservices {
         String line = null;
         try {
             // FileReader reads text files in the default encoding.
-            
             FileReader fileReader =   new FileReader(fileName);
             Vector<String> names = new Vector<String>();
 
