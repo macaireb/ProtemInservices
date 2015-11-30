@@ -41,6 +41,7 @@ public class Nurse {
     
     static String findNurse(String Record){
         String Line = new String();
+            
         try {
             // FileReader reads text files in the default encoding.
             FileReader fileReader = new FileReader(FileName);
@@ -67,6 +68,39 @@ public class Nurse {
         }
                     
            return Line;
+    }
+    
+    static void AddNurse(String Name){
+        if(Name.contains(" ")){
+            String[] tmp = Name.split(" ");
+            Name = tmp[0] + ", " + tmp[1];
+            Name += ", " + Name.hashCode();
+        }
+        File file = new File(FileName);
+        try {
+            // FileReader reads text files in the default encoding.
+            FileWriter Writer = new FileWriter(file.getAbsoluteFile(),true);
+            // Always wrap FileReader in BufferedReader.
+            BufferedWriter bufferedWriter = new BufferedWriter(Writer);
+            bufferedWriter.newLine();
+            bufferedWriter.write(Name);
+
+            // Always close files.
+            bufferedWriter.close();
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println(
+                "Unable to open file '" + 
+                FileName + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println(
+                "Error reading file '" 
+                + FileName + "'");                  
+            // Or we could just do this: 
+            // ex.printStackTrace();
+        }
+        
     }
     
 }
